@@ -15,5 +15,6 @@ public class GameOverScript : MonoBehaviour {
     void Lose ()
     {
         gameObject.GetComponent<Text>().enabled = true;
+
     }
 }
