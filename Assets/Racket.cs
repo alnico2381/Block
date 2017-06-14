@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Racket : MonoBehaviour {
 
-    private float accel = 1000.0f;
+    /*private float accel = 1000.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,4 +18,27 @@ public class Racket : MonoBehaviour {
             ForceMode.Impulse);
 		
 	}
+}*/
+
+private GameObject Player;
+private GameObject mainCamera;
+
+// Use this for initialization
+void Start(){
+
+    //Player = GameObject.Find("Racket");
+    mainCamera = GameObject.Find("Main Camera");
+
 }
+
+
+    // Update is called once per frame
+    void Update()
+{
+
+    this.transform.position = new Vector3(mainCamera.transform.position.x, 0, 0);
+
+    }
+}
+
+
