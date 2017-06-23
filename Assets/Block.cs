@@ -5,13 +5,19 @@ using UnityEngine;
 public class Block : MonoBehaviour {
 
     public GameObject enemy;
+    public GameObject macro;
 
-    GameObject gObj;
+    GameObject enemama;
+    GameObject macromama;
 
     // Use this for initialization
     void Start () {
-        // LeftWall/GameObjectを登録
-        gObj = GameObject.Find("LeftWall/GameObject/Enemy");
+
+        // LeftWall/GameObject/Enemyを登録
+        enemama = GameObject.Find("Stage/Enemy");
+        // LeftWall/GameObject/Macroを登録
+        macromama = GameObject.Find("Stage/Macro");
+
     }
 	
 	// Update is called once per frame
@@ -23,24 +29,31 @@ public class Block : MonoBehaviour {
 
         if (collision.gameObject.tag == "Ball") {
 
-            Vector3 position = new Vector3(45, -0.5f, Random.Range(-7.0f, 7.0f));
-            //Instantiate(enemy, position, Quaternion.identity);
+            Vector3 enepos = new Vector3(45, gameObject.transform.position.y, Random.Range(-7.0f, 7.0f));
 
             // instance作成
-            enemy = (GameObject)Instantiate(enemy, position, Quaternion.identity);
+            enemy = (GameObject)Instantiate(enemy, enepos, Quaternion.Euler(0, -90, -90));
             // enemyの親要素を設定（LeftWall/GameObject）
-            enemy.transform.parent = gObj.transform;
+            enemy.transform.parent = enemama.transform;
+
+            Vector3 macpos = new Vector3
+                (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+
+            // instance作成
+            macro = (GameObject)Instantiate(macro, macpos, Quaternion.identity);
+            // enemyの親要素を設定（LeftWall/GameObject）
+            macro.transform.parent = macromama.transform;
 
             //enemy.transform.parent = GameObject.Find("Enemy").transform;
-            Debug.Log("wwwwwwwwwwwww");
+            Debug.Log("佃煮");
 
             Destroy(this.gameObject);
         }
 
         if (collision.gameObject.tag == "Racket") {
+            //現状ブロックはスルー
+            //Destroy(this.gameObject);
 
-            Destroy(this.gameObject);
         }
     }
-
 }

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveWall : MonoBehaviour
-{
+public class MoveWall : MonoBehaviour {
 
     private GameObject Player;
     private GameObject Left;

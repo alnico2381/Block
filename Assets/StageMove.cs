@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageMove : MonoBehaviour {
 
-    public float speed = 1.5f;
+    float speed = 3.0f;
 
 	// Use this for initialization
 	void Start () {

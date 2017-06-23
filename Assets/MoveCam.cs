@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveCam : MonoBehaviour {
 
+    //現状未使用
+
     private GameObject Player;
     private GameObject mainCamera;
 
