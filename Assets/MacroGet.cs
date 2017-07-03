@@ -86,7 +86,7 @@ public class MacroGet : MonoBehaviour {
         enabled = false;
         yield return new WaitForSeconds(time);
         enabled = true;
-        Debug.Log(time + "秒経ちました");
+        Debug.Log(time + "秒待機明けました");
 
     }
 
@@ -100,7 +100,7 @@ public class MacroGet : MonoBehaviour {
             Vector3 itempos = new Vector3
                 (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
             // instance作成
-            item = (GameObject)Instantiate(item, itempos, Quaternion.identity);
+            item = (GameObject)Instantiate(item, itempos, Quaternion.Euler(90, 40, 0));
             // enemyの親要素を設定（LeftWall/GameObject）
             item.transform.parent = itemmama.transform;
 

@@ -5,19 +5,22 @@ public class MouseMove : MonoBehaviour
 {
 
     private Vector3 pos;
-    private Vector3 WorldPointPos;
-    //public float speed = 5.0f;
+    public static Vector3 WorldPointPos;
+    public static Vector3 mousep;
     public float time = 0.05f;
     Rigidbody rm;
-    Vector3 tmp2;
 
     private AudioSource sound01;
-    AudioSource audioSource;
+    private AudioSource sound02;
+    private AudioSource sound03;
+    AudioSource[] audioSource;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        sound01 = audioSource;
+        audioSource = GetComponents<AudioSource>();
+        sound01 = audioSource[0];
+        sound02 = audioSource[1];
+        sound03 = audioSource[2];
     }
 
     void Update()
@@ -40,13 +43,9 @@ public class MouseMove : MonoBehaviour
             WorldPointPos.z = 7.0f;
         }
 
-        //WorldPointPos.y = 0.0f;
-        //WorldPointPos.x = rm.velocity.x;
-        // tmp2.z = WorldPointPos.z;
+        mousep = new Vector3(1.5f, 0, WorldPointPos.z);
 
-        tmp2 = new Vector3(0, 0, WorldPointPos.z);
-
-        gameObject.transform.position = tmp2;
+        gameObject.transform.position = mousep;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -55,6 +54,16 @@ public class MouseMove : MonoBehaviour
         if (collision.gameObject.tag == "Item")
         {
             sound01.PlayOneShot(sound01.clip);
+        }
+
+        if (collision.gameObject.tag == "Block")
+        {
+            sound02.PlayOneShot(sound02.clip);
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            sound03.PlayOneShot(sound03.clip);
         }
     }
 }

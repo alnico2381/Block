@@ -8,10 +8,12 @@ public class Enemy : MonoBehaviour {
     AudioSource audioSource;
     public bool targetedIs = false;
     bool DeathIs = false;
+    public GameObject leftcol;
 
     void Start()
     {
-        GameObject.Find("LeftCol").GetComponent<BottomController>();
+        //これいる？
+        //leftcol.GetComponent<BottomController>();
 
         audioSource = GetComponent<AudioSource>();
         sound01 = audioSource;
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour {
         if (collision.gameObject.tag == "Macro")
         {
             sound01.PlayOneShot(sound01.clip);
+            GetComponent<EneMove>().enabled = false;
             DeathIs = true;
         }
 
